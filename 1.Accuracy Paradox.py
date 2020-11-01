@@ -1,19 +1,16 @@
 import pandas as pd
-# preprocessing
-from imblearn.over_sampling import SMOTE
-from sklearn.preprocessing import LabelEncoder
-from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
-import pandas_profiling as pp
+from sklearn.model_selection import train_test_split,
+
 
 # models
-from sklearn.linear_model import LinearRegression,LogisticRegression, Perceptron, RidgeClassifier, SGDClassifier
+from sklearn.linear_model import LinearRegression,LogisticRegression, RidgeClassifier, SGDClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.tree import DecisionTreeClassifier
 from sklearn import metrics
 
 #loading data
-data = pd.read_csv("train.csv")
+data = pd.read_csv("6.Train.csv")
 
 #feature engineering
 data = data.drop("id", axis=1)
@@ -25,14 +22,10 @@ data.drop_duplicates(inplace=True)
 
 
 features = data.drop("Response",axis=1)
-target = data["Response"]
-
-#balacing the data
-oversampler = SMOTE(random_state=2)
-new_features, new_targets = oversampler.fit_sample(features,target)
+targets = data["Response"]
 
 #splitting data
-features_train, features_val, targets_train, targets_val = train_test_split(new_features, new_targets, test_size=0.2, random_state=12)
+features_train, features_val, targets_train, targets_val = train_test_split(features, targets, test_size=0.2, random_state=12)
 
 
 #building and evaluating models

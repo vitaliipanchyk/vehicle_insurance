@@ -1,28 +1,20 @@
 
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn  as sns
 
 
 # preprocessing
-
-from sklearn.preprocessing import LabelEncoder
-from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
-import pandas_profiling as pp
+from sklearn.model_selection import train_test_split
 from imblearn.over_sampling import SMOTE
 
 # models
-from sklearn.linear_model import LinearRegression,LogisticRegression, Perceptron, RidgeClassifier, SGDClassifier
-from sklearn.svm import SVC, LinearSVC
-from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, ExtraTreesClassifier
-from sklearn.ensemble import BaggingClassifier, AdaBoostClassifier, VotingClassifier
+from sklearn.linear_model import LogisticRegression,  RidgeClassifier, SGDClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.tree import DecisionTreeClassifier
 from sklearn import metrics
 
-data = pd.read_csv("train.csv")
+data = pd.read_csv("6.Train.csv")
 data = data.drop("id", axis=1)
 data["Genders"] = data.Gender.apply(lambda x: 0  if x == "Male" else 1)
 data =  data.drop("Gender",axis=1)

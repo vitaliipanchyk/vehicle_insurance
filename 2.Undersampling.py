@@ -1,5 +1,5 @@
 import pandas as pd
-from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
+from sklearn.model_selection import train_test_split
 
 # import models
 from sklearn.linear_model import LogisticRegression,  RidgeClassifier, SGDClassifier
@@ -9,7 +9,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn import metrics
 
 #loading data
-data = pd.read_csv("train.csv")
+data = pd.read_csv("6.Train.csv")
 
 #feature engineering
 data = data.drop("id", axis=1)
